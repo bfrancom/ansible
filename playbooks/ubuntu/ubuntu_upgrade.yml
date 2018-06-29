@@ -1,0 +1,27 @@
+---
+- hosts: ubuntu
+  remote_user: bfrancom
+  become: yes
+#  sudo_user: bfrancom
+
+  tasks:
+    - name: upgrade everything
+      apt:
+        name: "*"
+        state: latest
+        
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: dist
+
+    - name: Run the equivalent of "apt-get update" as a separate step
+      apt:
+        update_cache: yes
+
+  # tasks:
+  #   - name: sudo apt-get update
+  #     command: sudo apt-get update
+  #   - name: sudo apt-get upgrade
+  #     command: sudo apt-get upgrade -y
+  #   - name: sudo apt-get dist-upgrade
+  #     command: sudo apt-get dist-upgrade -y

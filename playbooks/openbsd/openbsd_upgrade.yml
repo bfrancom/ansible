@@ -1,0 +1,9 @@
+---
+- hosts: openbsd_routers
+  remote_user: bfrancom
+
+  tasks:
+    - name: doas /usr/sbin/pkg_add -u
+      command: doas /usr/sbin/pkg_add -u
+    - name: doas /usr/sbin/syspatch
+      command: doas /usr/sbin/syspatch
